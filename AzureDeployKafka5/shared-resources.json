@@ -43,7 +43,10 @@
             "metadata": {
                 "Description": "Address space for the virtual network subnet"
             }
-        }
+        },
+	    "availabilitySetSettings": {
+	      "type": "object"
+	    }
     },
     "variables": {
         "platformFaultDomainCount": "2",
@@ -64,7 +67,9 @@
             "type": "Microsoft.Compute/availabilitySets",
             "name": "kafkaCluserAS",
             "location": "[parameters('region')]",
-            "properties": {
+            "properties": {	    
+		"platformFaultDomainCount": "[parameters('availabilitySetSettings').fdCount]",
+		"platformUpdateDomainCount": "[parameters('availabilitySetSettings').udCount]"
             }
         },
         {

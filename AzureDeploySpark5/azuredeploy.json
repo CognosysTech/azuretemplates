@@ -161,6 +161,11 @@
 			"numberOfSlavesInstances" : 6,
             "vmSize": "Standard_A7"
         },
+	"availabilitySetSettings": {
+	      "name": "sparkAvailabilitySet",
+	      "fdCount": 2,
+	      "udCount": 5
+	    },
         "numberOfMasterInstances": "[variables(concat('tshirtSize', parameters('tshirtSize'))).numberOfMasterInstances]",
 		"numberOfSlavesInstances": "[variables(concat('tshirtSize', parameters('tshirtSize'))).numberOfSlavesInstances]",
         "vmSize": "[variables(concat('tshirtSize', parameters('tshirtSize'))).vmSize]"
@@ -194,7 +199,10 @@
                     },
                     "subnetPrefix": {
                         "value": "[parameters('subnetPrefix')]"
-                    }
+                    },
+			  "availabilitySetSettings": {
+			    "value": "[variables('availabilitySetSettings')]"
+			  }
                 }
             }
         },

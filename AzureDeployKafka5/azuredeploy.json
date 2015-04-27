@@ -161,6 +161,11 @@
 			"numberOfKafkaInstances" : 7,
             "vmSize": "Standard_A7"
         },
+	"availabilitySetSettings": {
+	      "name": "kafkaAvailabilitySet",
+	      "fdCount": 2,
+	      "udCount": 5
+	    },
         "numberOfZookeeperInstances": "[variables(concat('tshirtSize', parameters('tshirtSize'))).numberOfZookeeperInstances]",
 		"numberOfKafkaInstances": "[variables(concat('tshirtSize', parameters('tshirtSize'))).numberOfKafkaInstances]",
         "vmSize": "[variables(concat('tshirtSize', parameters('tshirtSize'))).vmSize]"
@@ -194,7 +199,10 @@
                     },
                     "subnetPrefix": {
                         "value": "[parameters('subnetPrefix')]"
-                    }
+                    },
+		  "availabilitySetSettings": {
+		    "value": "[variables('availabilitySetSettings')]"
+		  }
                 }
             }
         },

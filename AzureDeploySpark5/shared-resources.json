@@ -64,7 +64,9 @@
             "type": "Microsoft.Compute/availabilitySets",
             "name": "sparkCluserAS",
             "location": "[parameters('region')]",
-            "properties": {
+            "properties": {	    
+		"platformFaultDomainCount": "[parameters('availabilitySetSettings').fdCount]",
+		"platformUpdateDomainCount": "[parameters('availabilitySetSettings').udCount]"
             }
         },
         {
